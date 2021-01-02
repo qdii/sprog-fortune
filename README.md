@@ -8,7 +8,9 @@ Tools:
 Usage:
 
 ```
-$ ./reddit_fetcher.py <USERNAME> <PASSWORD[:2FA_TOKEN]> <CLIENT_ID> <CLIENT_SECRET> | jq 'flatten | .[].body' | sed -f format_for_strfile.sed > sprog && strfile sprog
+$ ./reddit_fetcher.py --username=<USERNAME> --password=<PASSWORD[:2FA_TOKEN]> --client_id=<CLIENT_ID> --client_secret=<CLIENT_SECRET> [--path_to_database=sprog.json] > sprog_new.json
+$ mv sprog_new.json sprog.json
+$ cat sprog.json | jq 'flatten | .[].body' | sed -f format_for_strfile.sed > sprog && strfile sprog
 ```
 
-The command produces two files: `sprog` and `sprog.dat`, both of them need to be placed in `/usr/share/fortune` to be available in `fortune`.
+The command produces three files: `sprog.json`, `sprog` and `sprog.dat`. The two latter need to be placed in `/usr/share/fortune` to be available in `fortune`. The former is the sprog database, which can be enriched by re-running the script regularly.

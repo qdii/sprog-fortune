@@ -35,7 +35,7 @@ def load_poems_from_file(path: str) -> dict:
     with open(path, 'r') as file:
         poems = json.load(file)
     logging.info('Loaded %d poems from "%s"', len(poems), path)
-    return {}
+    return poems
 
 
 def retrieve_poems() -> dict:

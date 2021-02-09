@@ -1,7 +1,6 @@
-FROM amd64/python:3
+FROM arm32v7/python:3
 
 COPY reddit_fetcher.py .
-COPY continuous_fetch.sh .
 COPY requirements.txt .
 COPY sprog.json .
 
